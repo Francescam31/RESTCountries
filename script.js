@@ -7,15 +7,16 @@ const fetchCountries = async () => {
     return reponse;
 }
 
-function setUp() {
-    const data = fetchCountries();
+async function setUp() {
+    const data = await fetchCountries();
     // add countries to global variable
     addToCountries(data);
 }
 
-function addToCountries() {
+function addToCountries(data) {
     const ul = document.querySelector('ul');
-    data.forEach(country => {
+    ul.innerHTML = '';
+    data.forEach((country) => {
         const li = document.createElement('li');
         li.textContent(`Name ${country.name.common}, Population ${country.population}`);
         ul.appendChild(li);
@@ -23,7 +24,13 @@ function addToCountries() {
 }
 
 
-setUp();
+function handleForm(event) {
+    event.preventDefault();
+    const input = document.querySelector('input[type="text"]');
+   console.log('Input value:', input.value);
+}
+
+setUp
 
 
 // document.querySelector("button").addEventListener("click", fetchCountries());
