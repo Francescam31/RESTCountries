@@ -1,7 +1,19 @@
-const fetchCountries = () => { 
-    const request = fetch("https://restcountries.com/v3.1/all")
+// global variable 
+let countries = [];
+
+const fetchCountries = async () => { 
+    const reponse = await fetch("https://restcountries.com/v3.1/all")
     .then(response => response.json())
-    .then(response => console.log(response))
+    return reponse;
 }
 
-fetchCountries();
+function setUp() {
+    const data = fetchCountries();
+    // add countries to global variable
+}
+
+
+setUp();
+
+
+// document.querySelector("button").addEventListener("click", fetchCountries());
